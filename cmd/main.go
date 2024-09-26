@@ -138,8 +138,8 @@ func (pb PrometheusBackend) PrometheusHandler(w http.ResponseWriter, r *http.Req
 				Targets:     []string{fmt.Sprintf("%s/%s", alert.Labels["namespace"], alert.Labels["pod"])},
 				Description: alert.Fingerprint,
 				Rule: amtdapi.Rule{
-					Type:        alert.Labels["rule"],
-					ThreatLevel: alert.Labels["priority"],
+					Type:        alert.Labels["type"],
+					ThreatLevel: alert.Labels["threatlevel"],
 					Source:      "PrometheusIntegrator",
 				},
 			},
